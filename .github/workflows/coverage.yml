@@ -1,0 +1,39 @@
+name: Coverage
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test-and-coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # Adjust to your project's Node.js version
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run tests with coverage
+      - name: Run tests and collect coverage
+        run: npm run coverage
+
+      # Upload coverage to Coveralls
+      - name: Upload coverage to Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.softest_secret }}
+          path-to-lcov: ./coverage/lcov.info # Adjust this if the lcov report is saved elsewhere
+

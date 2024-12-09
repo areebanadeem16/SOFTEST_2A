@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "coverage": "c8 --reporter=text --reporter=lcov npm test",
+    "coveralls": "npm run coverage && c8 report --reporter=text-lcov | coveralls"
   },
   "author": "",
   "license": "MIT",
@@ -13,5 +15,9 @@
     "chai": "^5.1.2",
     "chai-http": "^5.1.1",
     "mocha": "^11.0.1"
+  },
+  "dependencies": {
+    "c8": "^10.1.2",
+    "coveralls": "^3.1.1"
   }
 }
