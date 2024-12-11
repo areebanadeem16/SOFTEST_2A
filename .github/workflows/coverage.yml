@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16' # Adjust to your project's Node.js version
+          node-version: '16' 
 
       # Install dependencies
       - name: Install dependencies
@@ -35,5 +35,5 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token: ${{ secrets.softest_secret }}
-          path-to-lcov: ./coverage/lcov.info # Adjust this if the lcov report is saved elsewhere
+          path-to-lcov: ./coverage/lcov.info 
 
